@@ -82,7 +82,7 @@ def render_word_picker_tab() -> None:
         # - Then replace commas with spaces.
         # - Then treat whitespace-separated tokens as individual strings.
         # - Optionally keep only tokens that contain both letters and numbers.
-        # - Finally, remove tokens shorter than 3 characters before searching.
+        # - Finally, remove tokens shorter than 4 characters before searching.
         # We also prepare a mapping from each token to all original source rows that contain it.
         expanded_tokens = []
         token_sources: dict[str, list[str]] = defaultdict(list)
@@ -95,7 +95,7 @@ def render_word_picker_tab() -> None:
                     continue
                 if keep_alphanumeric_only and not _has_letter_and_number(token_clean):
                     continue
-                if len(token_clean) >= 3:
+                if len(token_clean) >= 4:
                     expanded_tokens.append(token_clean)
                     token_sources[token_clean.lower()].append(value)
 
